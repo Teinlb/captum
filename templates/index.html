@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captum</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .search-form {
+            margin-bottom: 20px;
+        }
+        hr{
+            max-width: 500px;
+        }
+        .image-preview {
+            margin-top: 50px;
+        }
+        img {
+            width:12vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Captum</h1>
+        <form class="search-form" action="/" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" name="query" placeholder="Prompt...">
+                <input type="number" class="form-control" name="num_images" placeholder="Amount...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Download</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% if image_urls %}
+    <hr>
+    <div class="image-preview">
+        <h4 class="text-center">Succesfully downloaded {{ num_downloaded_images }} images.</h4>
+        <p class="text-center">Preview of the first 5 images:</p>
+        <div class="text-center">
+            {% for i in range(5) %}
+                <img src="{{ image_urls[i] }}" class="img-thumbnail" alt="Image Preview">
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
